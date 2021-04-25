@@ -41,5 +41,4 @@ export class ProductService {
     update(product: Product): Observable<Product> {
       return this.http.patch<Product>(`${this.apiUrl}/${product.id}`, product);
     }
-
 }
