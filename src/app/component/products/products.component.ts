@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Product } from 'src/app/model/product';
+import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-products',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  productList$: BehaviorSubject<Product[]> = this.pService.list$;
+
+  constructor(
+    private pService: ProductService,
+  ) { }
 
   ngOnInit(): void {
+    this.pService.getAll();
   }
-
 }
